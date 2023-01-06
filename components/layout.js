@@ -53,7 +53,7 @@ export default function Layout({ children }) {
       <main className="container mx-auto flex-1">{children}</main>
       <footer className="mt-8 py-4">
           <div className="container mx-auto flex justify-center">
-              <span>🗽❤️ <span className="inline-block relative w-4 align-middle"><img src="/images/diet-coke/full-can.svg" /></span></span>
+              <span>🗽❤️🥤</span>
           </div>
       </footer>
     </div>
