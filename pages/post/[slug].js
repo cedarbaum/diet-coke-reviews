@@ -32,12 +32,14 @@ export default function PostPage({ frontmatter, content }) {
   return (
     <article className="prose mx-8">
       <h1 className="mb-2">{frontmatter.title}</h1>
-      <h2 className="text-gray-500 text-sm mt-0">{frontmatter.neighborhood}, {frontmatter.burrough}</h2>
+      <h2 className="text-gray-500 text-sm mt-0">
+        {frontmatter.neighborhood}, {frontmatter.burrough}
+      </h2>
       <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
       <footer className="container mt-8 flex justify-center">
         <div>
-          {getCanTypesFromRating(frontmatter.rating).map((canType) => (
-            <span className="inline-block">
+          {getCanTypesFromRating(frontmatter.rating).map((canType, idx) => (
+            <span key={`can_${idx}`} className="inline-block">
               <img
                 className="m-1"
                 width={40}

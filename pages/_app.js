@@ -4,7 +4,7 @@ import { SearchContext } from "../components/SearchContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const value = { search, setSearch };
 
   return (
