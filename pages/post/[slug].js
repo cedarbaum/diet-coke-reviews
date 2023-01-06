@@ -1,12 +1,14 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import md from 'markdown-it';
+import fs from "fs";
+import matter from "gray-matter";
+import md from "markdown-it";
+
+import { getCanTypesFromRating } from "../../util/util";
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync('posts');
+  const files = fs.readdirSync("posts");
   const paths = files.map((fileName) => ({
     params: {
-      slug: fileName.replace('.md', ''),
+      slug: fileName.replace(".md", ""),
     },
   }));
   return {
@@ -16,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const fileName = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
+  const fileName = fs.readFileSync(`posts/${slug}.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
   return {
     props: {
@@ -28,9 +30,23 @@ export async function getStaticProps({ params: { slug } }) {
 
 export default function PostPage({ frontmatter, content }) {
   return (
-    <div className='prose mx-auto'>
-      <h1>{frontmatter.title}</h1>
+    <article className="prose mx-8">
+      <h1 className="mb-2">{frontmatter.title}</h1>
+      <h2 className="text-gray-500 text-sm mt-0">{frontmatter.neighborhood}, {frontmatter.burrough}</h2>
       <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
-    </div>
+      <footer className="container mt-8 flex justify-center">
+        <div>
+          {getCanTypesFromRating(frontmatter.rating).map((canType) => (
+            <span className="inline-block">
+              <img
+                className="m-1"
+                width={40}
+                src={`/images/diet-coke/${canType}.svg`}
+              />
+            </span>
+          ))}
+        </div>
+      </footer>
+    </article>
   );
 }
