@@ -42,9 +42,17 @@ export default function Home({ posts }) {
     );
   }
 
-  return (
+  const filteredAndSortedPosts = posts
+    .filter(({ frontmatter }) => matchesSearch(frontmatter, search))
+    .sort((p1, p2) => {
+      const p1Date = Date.parse(p1.frontmatter.date);
+      const p2Date = Date.parse(p2.frontmatter.date);
+      return p2Date - p1Date;
+    });
+
+  return filteredAndSortedPosts.length > 0 ? (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0">
-      {posts
+      {filteredAndSortedPosts
         .filter(({ frontmatter }) => matchesSearch(frontmatter, search))
         .map(({ slug, frontmatter }) => (
           <article
@@ -90,5 +98,14 @@ export default function Home({ posts }) {
           </article>
         ))}
     </div>
+  ) : (
+      <div className="container flex flex-col mb-4 justify-center items-center">
+          <div>
+              <img width="100px" src="/images/diet_pepsi_icon.svg" />
+          </div>
+          <div className="mt-3">
+              <h1 className="font-bold text-lg">Nothing found - Is Pepsi OK?</h1>
+          </div>
+      </div>
   );
 }
