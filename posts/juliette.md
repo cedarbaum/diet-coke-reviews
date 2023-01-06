@@ -13,3 +13,7 @@ tags:
   - williamsburg
   - brooklyn
 ---
+
+- Very botanical tasting - I think this may have been one of those alternative diet colas
+- Decent paper straw, didn't dissolve in my mouth
+- Fun "perfect" ice cube 🧊

@@ -26,8 +26,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  const { search, setSearch } = useContext(SearchContext);
-  console.log(`search = ${search}`);
+  const { search } = useContext(SearchContext);
 
   function matchesSearch(frontmatter, search) {
     if (search === undefined || search === "") {
