@@ -66,7 +66,6 @@ export default function Home({ posts }) {
                   style={{
                     position: "relative",
                     width: "auto",
-                    minWidth: "240px",
                     height: "340px",
                   }}
                 >
@@ -79,7 +78,7 @@ export default function Home({ posts }) {
                   />
                 </div>
                 <header className="grow">
-                  <div className="flex items-center justify-between leading-tight p-2 md:p-2">
+                  <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
                     <h1 className="text-lg font-bold">{frontmatter.title}</h1>
                     <p className="text-grey-darker text-sm">
                       {frontmatter.date}
