@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
+import Image from "next/Image";
 import { useContext } from "react";
 import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";
@@ -59,14 +60,25 @@ export default function Home({ posts }) {
             className="border border-gray-200 m-2 rounded-xl shadow-lg overflow-hidden flex flex-col"
           >
             <Link href={`/post/${slug}`}>
-              <a>
-                <img
-                  width={650}
-                  height={340}
-                  alt={frontmatter.title}
-                  src={`/${frontmatter.socialImage}`}
-                />
-                <header>
+              <a className="flex flex-col grow container">
+                <div
+                  className="pt-2"
+                  style={{
+                    position: "relative",
+                    width: "auto",
+                    minWidth: "240px",
+                    height: "340px",
+                  }}
+                >
+                  {" "}
+                  <Image
+                    layout="fill"
+                    objectFit="cover"
+                    alt={frontmatter.title}
+                    src={`/${frontmatter.socialImage}`}
+                  />
+                </div>
+                <header className="grow">
                   <div className="flex items-center justify-between leading-tight p-2 md:p-2">
                     <h1 className="text-lg font-bold">{frontmatter.title}</h1>
                     <p className="text-grey-darker text-sm">
@@ -82,11 +94,12 @@ export default function Home({ posts }) {
                 <footer className="p-2">
                   {getCanTypesFromRating(frontmatter.rating).map(
                     (canType, idx) => (
-                      <span key={`can_${idx}`} className="inline-block">
-                        <img
-                          className="m-1"
+                      <span key={`can_${idx}`} className="inline-block m-1">
+                        <Image
                           width={25}
+                          height={canType === "full-can" ? 44.55 : 22.0833}
                           src={`/images/diet-coke/${canType}.svg`}
+                          alt="Diet Coke can"
                         />
                       </span>
                     )
@@ -98,13 +111,18 @@ export default function Home({ posts }) {
         ))}
     </div>
   ) : (
-      <div className="container flex flex-col mb-4 justify-center items-center">
-          <div>
-              <img width="100px" src="/images/diet_pepsi_icon.svg" />
-          </div>
-          <div className="mt-3">
-              <h1 className="font-bold text-lg">Nothing found - Is Pepsi OK?</h1>
-          </div>
+    <div className="container flex flex-col mb-4 justify-center items-center">
+      <div>
+        <Image
+          width="100px"
+          height="178.2px"
+          src="/images/diet_pepsi_icon.svg"
+          alt="Diet Pepsi can"
+        />
       </div>
+      <div className="mt-3">
+        <h1 className="font-bold text-lg">Nothing found - Is Pepsi OK?</h1>
+      </div>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Link from "next/link";
+import Image from "next/Image";
 import { useRouter } from "next/router";
 import { SearchContext } from "./SearchContext";
 
@@ -14,7 +15,12 @@ export default function Layout({ children }) {
           <div className="flex">
             <Link href="/">
               <a>
-                <img width={35} src={"/images/diet-coke/full-can.svg"} />
+                <Image
+                  width={35}
+                  height={62.3667}
+                  src="/images/diet-coke/full-can.svg"
+                  alt="Diet Coke can"
+                />
               </a>
             </Link>
           </div>
@@ -52,9 +58,9 @@ export default function Layout({ children }) {
       </header>
       <main className="container mx-auto flex-1">{children}</main>
       <footer className="mt-8 py-4">
-          <div className="container mx-auto flex justify-center">
-              <span>🗽❤️🥤</span>
-          </div>
+        <div className="container mx-auto flex justify-center">
+          <span>🗽❤️🥤</span>
+        </div>
       </footer>
     </div>
   );

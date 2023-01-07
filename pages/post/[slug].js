@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import md from "markdown-it";
+import Image from "next/Image";
 
 import { getCanTypesFromRating } from "../../util/util";
 
@@ -39,11 +40,13 @@ export default function PostPage({ frontmatter, content }) {
       <footer className="container mt-8 flex justify-center">
         <div>
           {getCanTypesFromRating(frontmatter.rating).map((canType, idx) => (
-            <span key={`can_${idx}`} className="inline-block">
-              <img
-                className="m-1"
+            <span key={`can_${idx}`} className="inline-block m-1 align-bottom">
+              <Image
+                className="align-bottom"
                 width={40}
+                height={canType === "half-can" ? 35.3167 : 71.2833}
                 src={`/images/diet-coke/${canType}.svg`}
+                alt={"Diet Coke can"}
               />
             </span>
           ))}
