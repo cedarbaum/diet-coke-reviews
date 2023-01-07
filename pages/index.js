@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
-import Image from "next/Image";
+import Image from "next/image";
 import { useContext } from "react";
 import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";

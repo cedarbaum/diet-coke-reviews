@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import md from "markdown-it";
-import Image from "next/Image";
+import Image from "next/image";
 
 import { getCanTypesFromRating } from "../../util/util";
 
