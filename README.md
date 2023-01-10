@@ -1,4 +1,12 @@
-This is a Markdown powered Next.js blog!
+<img src="./public/images/diet-coke/full-can.svg" width="50" height="auto">
+
+## Diet Coke review in NYC 🗽🥤
+
+This is a simple, markdown-powered website for posting reviews of Diet Cokes at restaurants in NYC.
+
+It is not componentized very well, and doesn't use TypeScript, as a project this pointless doesn't deserve static type checking.
+
+It is largely based on this project: https://github.com/rebelchris/next-markdown-blog.
 
 ## Getting Started
 
@@ -6,17 +14,9 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Learn More
-
-This project is written for OpenReplay and you can find the full article here:
-
-[Link to article](https://blog.openreplay.com/creating-a-markdown-blog-powered-by-next-js-in-under-an-hour)
 
 ## Deploy on Vercel
 
