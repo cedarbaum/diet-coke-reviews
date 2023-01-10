@@ -1,6 +1,6 @@
 <img src="./public/images/diet-coke/full-can.svg" width="50" height="auto">
 
-## Diet Coke review in NYC 🗽🥤
+## Diet Coke reviews in NYC 🗽🥤
 
 This is a simple, markdown-powered website for posting reviews of Diet Cokes at restaurants in NYC.
 
