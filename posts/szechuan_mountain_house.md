@@ -2,7 +2,7 @@
 title: 'Szechuan Mountain House'
 city: 'NYC'
 neighborhood: 'Ukrainian Village'
-burrough: 'Manhattan'
+borough: 'Manhattan'
 metaTitle:
 metaDesc:
 socialImage: images/szechuan_mountain_house.png

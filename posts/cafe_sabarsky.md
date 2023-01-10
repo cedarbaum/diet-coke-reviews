@@ -2,7 +2,7 @@
 title: 'Café Sabarsky'
 city: 'NYC'
 neighborhood: 'Upper East Side'
-burrough: 'Manhattan'
+borough: 'Manhattan'
 metaTitle: 'Café Sabarsky'
 metaDesc: ''
 socialImage: images/cafe_sabarsky.png

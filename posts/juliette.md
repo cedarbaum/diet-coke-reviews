@@ -2,7 +2,7 @@
 title: 'Juliette'
 city: 'NYC'
 neighborhood: 'Williamsburg'
-burrough: 'Brooklyn'
+borough: 'Brooklyn'
 metaTitle: 'Juliette'
 metaDesc: ''
 socialImage: images/juliette.png

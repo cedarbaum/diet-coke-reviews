@@ -38,7 +38,7 @@ export default function Home({ posts }) {
     return (
       frontmatter.title.toLowerCase().includes(searchLowerCase) ||
       frontmatter.neighborhood.toLowerCase().includes(searchLowerCase) ||
-      frontmatter.burrough.toLowerCase().includes(searchLowerCase)
+      frontmatter.borough.toLowerCase().includes(searchLowerCase)
     );
   }
 
@@ -86,7 +86,7 @@ export default function Home({ posts }) {
                   </div>
                   <div className="pl-2">
                     <h2 className="text-gray-500 text-sm">
-                      {frontmatter.neighborhood}, {frontmatter.burrough}
+                      {frontmatter.neighborhood}, {frontmatter.borough}
                     </h2>
                   </div>
                 </header>

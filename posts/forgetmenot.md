@@ -2,7 +2,7 @@
 title: 'Forgtmenot'
 city: 'NYC'
 neighborhood: Chinatown
-burrough: 'Manhattan'
+borough: 'Manhattan'
 metaTitle:
 metaDesc:
 socialImage: images/forgetmenot.png

@@ -34,7 +34,7 @@ export default function PostPage({ frontmatter, content }) {
     <article className="prose mx-8">
       <h1 className="mb-2">{frontmatter.title}</h1>
       <h2 className="text-gray-500 text-sm mt-0">
-        {frontmatter.neighborhood}, {frontmatter.burrough}
+        {frontmatter.neighborhood}, {frontmatter.borough}
       </h2>
       <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
       <footer className="container mt-8 flex justify-center">
