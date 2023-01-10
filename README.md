@@ -4,6 +4,8 @@
 
 This is a simple, markdown-powered website for posting reviews of Diet Cokes at restaurants in NYC.
 
+It is hosted on Vercel here: [https://dietcoke.reviews](https://dietcoke.reviews)
+
 It is not componentized very well, and doesn't use TypeScript, as a project this pointless doesn't deserve static type checking.
 
 It is largely based on this project: https://github.com/rebelchris/next-markdown-blog.
