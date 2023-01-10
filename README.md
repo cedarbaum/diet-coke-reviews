@@ -6,8 +6,6 @@ This is a simple, markdown-powered website for posting reviews of Diet Cokes at 
 
 It is hosted on Vercel here: [https://dietcoke.reviews](https://dietcoke.reviews)
 
-It is not componentized very well, and doesn't use TypeScript, as a project this pointless doesn't deserve static type checking.
-
 It is largely based on this project: https://github.com/rebelchris/next-markdown-blog.
 
 ## Getting Started
@@ -19,6 +17,31 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Adding a review
+
+1. Add a new markdown file in the `posts` directory (e.g., `restaurant_name.md`).
+2. Add the review image to the `public/images` directory.
+3. In the markdown files, fill in the following metadata fields
+
+```
+---
+title: 'Restaurant name'
+city: 'NYC'
+neighborhood: 'neighborhood'
+borough: 'borough'
+socialImage: images/your_image.png
+rating: rating (0 to 5 with 0.5 increments)
+date: 'YYYY-MM-DD'
+tags:
+  - tag 1
+  - tag 2
+  - ...
+---
+```
+
+4. Write review text below the metadata section
+5. Reload page
 
 ## Deploy on Vercel
 
