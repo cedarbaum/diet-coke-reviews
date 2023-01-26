@@ -26,7 +26,11 @@ export default function Layout({ children }) {
           </div>
           {router.pathname === "/" && (
             <div className="flex">
-              <div className="relative flex items-center h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+              <div
+                className="relative flex items-center h-12 rounded-lg focus-within:outline-2
+                           outline-1 outline-slate-200 outline focus-within:outline-slate-300
+                           bg-white overflow-hidden"
+              >
                 <div className="grid place-items-center h-full w-12 text-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
