@@ -5,7 +5,7 @@ neighborhood: 'Union Square'
 borough: 'Manhattan'
 metaTitle:
 metaDesc:
-socialImage: images/Tsurutontan.png
+socialImage: images/tsurutontan.png
 rating: 0.5
 date: '2023-01-27'
 tags:
