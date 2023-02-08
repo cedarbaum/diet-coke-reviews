@@ -1,5 +1,5 @@
 ---
-  title: 'Electric Burrito'
+title: 'Electric Burrito'
 city: 'NYC'
 neighborhood: 'East Village'
 borough: 'Manhattan'
