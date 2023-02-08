@@ -5,7 +5,7 @@ neighborhood: 'East Village'
 borough: 'Manhattan'
 metaTitle:
 metaDesc:
-socialImage: images/electric_burito.png
+socialImage: images/electric_burrito.png
 rating: 3.5
 date: '2023-02-04'
 tags:
