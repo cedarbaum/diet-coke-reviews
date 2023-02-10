@@ -57,7 +57,7 @@ export default function Home({ posts }) {
         .map(({ slug, frontmatter }) => (
           <article
             key={slug}
-            className="border border-gray-200 m-2 rounded-xl shadow-lg overflow-hidden flex flex-col"
+            className="border border-gray-200 m-2 rounded-xl outline-1 outline-slate-200 overflow-hidden flex flex-col"
           >
             <Link href={`/post/${slug}`}>
               <a className="flex flex-col grow container">
