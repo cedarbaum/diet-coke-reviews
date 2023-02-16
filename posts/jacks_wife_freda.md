@@ -1,5 +1,5 @@
 ---
-title: 'Jack's Wife Freda'
+title: 'Jack''s Wife Freda'
 city: 'NYC'
 neighborhood: 'Chelsea'
 borough: 'Manhattan'
