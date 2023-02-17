@@ -91,18 +91,20 @@ export default function Home({ posts }) {
                   </div>
                 </header>
                 <footer className="p-2">
-                  {getCanTypesFromRating(frontmatter.rating).map(
-                    (canType, idx) => (
-                      <span key={`can_${idx}`} className="inline-block m-1">
-                        <Image
-                          width={25}
-                          height={canType === "full-can" ? 44.55 : 22.0833}
-                          src={`/images/diet-coke/${canType}.svg`}
-                          alt="Diet Coke can"
-                        />
-                      </span>
-                    )
-                  )}
+                  <div className="flex justify-center">
+                    {getCanTypesFromRating(frontmatter.rating).map(
+                      (canType, idx) => (
+                        <span key={`can_${idx}`} className="inline-block m-1">
+                          <Image
+                            width={25}
+                            height={44.55}
+                            src={`/images/diet-coke/${canType}.svg`}
+                            alt="Diet Coke can"
+                          />
+                        </span>
+                      )
+                    )}
+                  </div>
                 </footer>
               </a>
             </Link>
