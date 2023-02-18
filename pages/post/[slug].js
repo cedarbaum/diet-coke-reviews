@@ -44,7 +44,7 @@ export default function PostPage({ frontmatter, content }) {
               <Image
                 className="align-bottom"
                 width={40}
-                height={canType === "half-can" ? 35.3167 : 71.2833}
+                height={71.2833}
                 src={`/images/diet-coke/${canType}.svg`}
                 alt={"Diet Coke can"}
               />
