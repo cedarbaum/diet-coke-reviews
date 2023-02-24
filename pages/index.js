@@ -62,7 +62,6 @@ export default function Home({ posts }) {
             <Link href={`/post/${slug}`}>
               <a className="flex flex-col grow container">
                 <div
-                  className="pt-2"
                   style={{
                     position: "relative",
                     width: "auto",
