@@ -47,7 +47,10 @@ export default function PostPage({ frontmatter, content }) {
                 height={71.2833}
                 src={`/images/diet-coke/${canType}.svg`}
                 alt={"Diet Coke can"}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </span>
           ))}
         </div>

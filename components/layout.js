@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { SearchContext } from "./SearchContext";
 import SearchBox from "./SearchBox";
 
 export default function Layout({ children }) {
-  const { search, setSearch } = useContext(SearchContext);
   const router = useRouter();
 
   return (
@@ -15,14 +13,15 @@ export default function Layout({ children }) {
         <div className="flex justify-between">
           <div className="flex">
             <Link href="/">
-              <a>
-                <Image
-                  width={35}
-                  height={62.3667}
-                  src="/images/diet-coke/full-can.svg"
-                  alt="Diet Coke can"
-                />
-              </a>
+              <Image
+                width={35}
+                height={62.3667}
+                src="/images/diet-coke/full-can.svg"
+                alt="Diet Coke can"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </Link>
           </div>
           {router.pathname === "/" && <SearchBox />}
