@@ -38,7 +38,10 @@ export default function Home({ posts }) {
     return (
       frontmatter.title.toLowerCase().includes(searchLowerCase) ||
       frontmatter.neighborhood.toLowerCase().includes(searchLowerCase) ||
-      frontmatter.borough.toLowerCase().includes(searchLowerCase)
+      frontmatter.borough.toLowerCase().includes(searchLowerCase) ||
+      frontmatter.tags?.some((tag) =>
+        tag.toLowerCase().includes(searchLowerCase)
+      )
     );
   }
 
