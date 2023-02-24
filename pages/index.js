@@ -71,7 +71,6 @@ export default function Home({ posts }) {
                     height: "340px",
                   }}
                 >
-                  {" "}
                   <Image
                     layout="fill"
                     objectFit="cover"
