@@ -66,21 +66,16 @@ export default function Home({ posts }) {
               href={`/post/${slug}`}
               className="flex flex-col grow container"
             >
-              <div
-                style={{
-                  position: "relative",
-                  width: "auto",
-                  height: "340px",
-                }}
-              >
+              <div className="relative h-[340px] w-auto">
                 <Image
                   alt={frontmatter.title}
                   src={`/${frontmatter.socialImage}`}
                   fill
                   sizes="100vw"
                   style={{
-                    objectFit: "cover"
-                  }} />
+                    objectFit: "cover",
+                  }}
+                />
               </div>
               <header className="grow">
                 <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
@@ -105,8 +100,9 @@ export default function Home({ posts }) {
                           alt="Diet Coke can"
                           style={{
                             maxWidth: "100%",
-                            height: "auto"
-                          }} />
+                            height: "auto",
+                          }}
+                        />
                       </span>
                     )
                   )}
@@ -126,8 +122,9 @@ export default function Home({ posts }) {
           alt="Diet Pepsi can"
           style={{
             maxWidth: "100%",
-            height: "auto"
-          }} />
+            height: "auto",
+          }}
+        />
       </div>
       <div className="mt-3">
         <h1 className="font-bold text-lg">Nothing found - Is Pepsi OK?</h1>
