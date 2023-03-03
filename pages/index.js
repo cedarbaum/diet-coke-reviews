@@ -6,8 +6,6 @@ import { useContext } from "react";
 import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";
 
-const NUM_PRIORITY_LOAD_POSTS = 8;
-
 export async function getStaticProps() {
   const files = fs.readdirSync("posts");
 
@@ -59,7 +57,7 @@ export default function Home({ posts }) {
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0">
       {filteredAndSortedPosts
         .filter(({ frontmatter }) => matchesSearch(frontmatter, search))
-        .map(({ slug, frontmatter }, idx) => (
+        .map(({ slug, frontmatter }) => (
           <article
             key={slug}
             className="border border-gray-200 m-2 rounded-xl outline-1 outline-slate-200 overflow-hidden flex flex-col"
@@ -72,7 +70,6 @@ export default function Home({ posts }) {
                 <Image
                   alt={frontmatter.title}
                   src={`/${frontmatter.socialImage}`}
-                  priority={idx < NUM_PRIORITY_LOAD_POSTS}
                   fill
                   sizes="100vw"
                   style={{
