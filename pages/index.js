@@ -110,14 +110,14 @@ export default function Home({ posts }) {
     <div className="container flex flex-col mb-4 justify-center items-center">
       <div>
         <Image
-          width="100px"
-          height="178px"
+          width={100}
+          height={178}
           src="/images/diet_pepsi_icon.svg"
           alt="Diet Pepsi can"
           style={{
             maxWidth: "100%",
-            width: "100px",
-            height: "178px",
+            width: 100,
+            height: 178,
           }}
         />
       </div>
