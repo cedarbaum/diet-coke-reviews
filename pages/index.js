@@ -93,8 +93,8 @@ export default function Home({ posts }) {
                           alt="Diet Coke can"
                           style={{
                             maxWidth: "100%",
-                            width: "auto",
-                            height: "auto",
+                            width: 25,
+                            height: 45,
                           }}
                         />
                       </span>

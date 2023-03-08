@@ -49,8 +49,8 @@ export default function PostPage({ frontmatter, content }) {
                 alt="Diet Coke can"
                 style={{
                   maxWidth: "100%",
-                  width: "auto",
-                  height: "auto",
+                  width: 40,
+                  height: 71,
                 }}
               />
             </span>

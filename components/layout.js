@@ -15,13 +15,13 @@ export default function Layout({ children }) {
             <Link href="/">
               <Image
                 width={35}
-                height={62.3667}
+                height={63}
                 src="/images/diet-coke/full-can.svg"
                 alt="Diet Coke can"
                 style={{
                   maxWidth: "100%",
-                  width: "auto",
-                  height: "auto",
+                  width: 35,
+                  height: 63,
                 }}
               />
             </Link>
