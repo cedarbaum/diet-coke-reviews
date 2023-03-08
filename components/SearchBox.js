@@ -28,7 +28,7 @@ export default function SearchBox() {
           </svg>
         </div>
         <input
-          className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+          className="peer h-full w-full outline-none text-[16px] text-gray-700 pr-2"
           type="text"
           id="search"
           placeholder="Search something..."
