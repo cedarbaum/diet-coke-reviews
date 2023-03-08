@@ -9,7 +9,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="mb-8 py-4 p-8 sticky top-0 z-30 bg-white">
+      <header className="py-4 p-8 sticky top-0 z-30 bg-white">
         <div className="flex justify-between">
           <div className="flex">
             <Link href="/">
