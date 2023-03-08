@@ -111,12 +111,13 @@ export default function Home({ posts }) {
       <div>
         <Image
           width="100px"
-          height="178.2px"
+          height="178px"
           src="/images/diet_pepsi_icon.svg"
           alt="Diet Pepsi can"
           style={{
             maxWidth: "100%",
-            height: "auto",
+            width: "100px",
+            height: "178px",
           }}
         />
       </div>
