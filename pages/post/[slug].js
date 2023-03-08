@@ -44,13 +44,15 @@ export default function PostPage({ frontmatter, content }) {
               <Image
                 className="align-bottom"
                 width={40}
-                height={71.2833}
+                height={71}
                 src={`/images/diet-coke/${canType}.svg`}
-                alt={"Diet Coke can"}
+                alt="Diet Coke can"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
             </span>
           ))}
         </div>

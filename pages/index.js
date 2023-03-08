@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useContext } from "react";
 import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";
+import PostMedia from "../components/PostMedia";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("posts");
@@ -66,16 +67,8 @@ export default function Home({ posts }) {
               href={`/post/${slug}`}
               className="flex flex-col grow container"
             >
-              <div className="relative h-[340px] w-auto">
-                <Image
-                  alt={frontmatter.title}
-                  src={`/${frontmatter.socialImage}`}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
+              <div className="h-[340px] w-full">
+                <PostMedia frontmatter={frontmatter} />
               </div>
               <header className="grow">
                 <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
@@ -95,11 +88,12 @@ export default function Home({ posts }) {
                       <span key={`can_${idx}`} className="inline-block m-1">
                         <Image
                           width={25}
-                          height={44.55}
+                          height={45}
                           src={`/images/diet-coke/${canType}.svg`}
                           alt="Diet Coke can"
                           style={{
                             maxWidth: "100%",
+                            width: "auto",
                             height: "auto",
                           }}
                         />

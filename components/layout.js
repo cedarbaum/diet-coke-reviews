@@ -20,8 +20,10 @@ export default function Layout({ children }) {
                 alt="Diet Coke can"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
             </Link>
           </div>
           {router.pathname === "/" && <SearchBox />}
