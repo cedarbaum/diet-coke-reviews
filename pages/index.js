@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";
 import PostMedia from "../components/PostMedia";
@@ -28,7 +28,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  const { search } = useContext(SearchContext);
+  const { search, setIsInNotFoundState } = useContext(SearchContext);
 
   function matchesSearch(frontmatter, search) {
     if (search === undefined || search === "") {
@@ -54,60 +54,59 @@ export default function Home({ posts }) {
       return p2Date - p1Date;
     });
 
+  useEffect(() => {
+    setIsInNotFoundState(filteredAndSortedPosts?.length === 0);
+  }, [filteredAndSortedPosts]);
+
   return filteredAndSortedPosts.length > 0 ? (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0">
-      {filteredAndSortedPosts
-        .filter(({ frontmatter }) => matchesSearch(frontmatter, search))
-        .map(({ slug, frontmatter }) => (
-          <article
-            key={slug}
-            className="border border-gray-200 m-2 rounded-xl outline-1 outline-slate-200 overflow-hidden flex flex-col translate-x-0"
-          >
-            <Link
-              href={`/post/${slug}`}
-              className="flex flex-col grow container"
-            >
-              <div className="h-[340px] w-full">
-                <PostMedia frontmatter={frontmatter} />
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0 w-full h-fit">
+      {filteredAndSortedPosts.map(({ slug, frontmatter }) => (
+        <article
+          key={slug}
+          className="border border-gray-200 m-2 rounded-xl outline-1 outline-slate-200 overflow-hidden flex flex-col translate-x-0"
+        >
+          <Link href={`/post/${slug}`} className="flex flex-col grow container">
+            <div className="h-[340px] w-full">
+              <PostMedia frontmatter={frontmatter} />
+            </div>
+            <header className="grow">
+              <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
+                <h1 className="text-lg font-bold">{frontmatter.title}</h1>
+                <p className="text-grey-darker text-sm">{frontmatter.date}</p>
               </div>
-              <header className="grow">
-                <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
-                  <h1 className="text-lg font-bold">{frontmatter.title}</h1>
-                  <p className="text-grey-darker text-sm">{frontmatter.date}</p>
-                </div>
-                <div className="pl-2">
-                  <h2 className="text-gray-500 text-sm">
-                    {frontmatter.neighborhood}, {frontmatter.borough}
-                  </h2>
-                </div>
-              </header>
-              <footer className="p-2">
-                <div className="flex justify-center">
-                  {getCanTypesFromRating(frontmatter.rating).map(
-                    (canType, idx) => (
-                      <span key={`can_${idx}`} className="inline-block m-1">
-                        <Image
-                          width={25}
-                          height={45}
-                          src={`/images/diet-coke/${canType}.svg`}
-                          alt="Diet Coke can"
-                          style={{
-                            maxWidth: "100%",
-                            width: 25,
-                            height: 45,
-                          }}
-                        />
-                      </span>
-                    )
-                  )}
-                </div>
-              </footer>
-            </Link>
-          </article>
-        ))}
+              <div className="pl-2">
+                <h2 className="text-gray-500 text-sm">
+                  {frontmatter.neighborhood}, {frontmatter.borough}
+                </h2>
+              </div>
+            </header>
+            <footer className="p-2">
+              <div className="flex justify-center">
+                {getCanTypesFromRating(frontmatter.rating).map(
+                  (canType, idx) => (
+                    <span key={`can_${idx}`} className="inline-block m-1">
+                      <Image
+                        width={25}
+                        height={45}
+                        src={`/images/diet-coke/${canType}.svg`}
+                        alt="Diet Coke can"
+                        style={{
+                          maxWidth: "100%",
+                          width: 25,
+                          height: 45,
+                        }}
+                      />
+                    </span>
+                  )
+                )}
+              </div>
+            </footer>
+          </Link>
+        </article>
+      ))}
     </div>
   ) : (
-    <div className="container flex flex-col mb-4 justify-center items-center">
+    <div className="container flex flex-col flex-1 mb-4 justify-center items-center">
       <div>
         <Image
           width={100}

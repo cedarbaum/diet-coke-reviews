@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import SearchBox from "./SearchBox";
+import { SearchContext } from "./SearchContext";
 
 export default function Layout({ children }) {
   const router = useRouter();
+  const { isInNotFoundState, search } = useContext(SearchContext);
+  const canImage = !isInNotFoundState
+    ? "/images/diet-coke/full-can.svg"
+    : "/images/diet_pepsi_icon.svg";
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -16,7 +21,7 @@ export default function Layout({ children }) {
               <Image
                 width={35}
                 height={63}
-                src="/images/diet-coke/full-can.svg"
+                src={canImage}
                 alt="Diet Coke can"
                 style={{
                   maxWidth: "100%",
@@ -29,7 +34,7 @@ export default function Layout({ children }) {
           {router.pathname === "/" && <SearchBox />}
         </div>
       </header>
-      <main className="container mx-auto flex-1">{children}</main>
+      <main className="container mx-auto flex flex-1">{children}</main>
       <footer className="mt-8 py-4">
         <div className="container mx-auto flex justify-center">
           <span className="text-4xl md:text-2xl">🗽❤️🥤</span>
