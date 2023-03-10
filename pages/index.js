@@ -106,7 +106,7 @@ export default function Home({ posts }) {
       ))}
     </div>
   ) : (
-    <div className="container flex flex-col flex-1 mb-4 justify-center items-center">
+    <div className="container flex flex-col flex-1 mb-4 md:justify-center items-center">
       <div>
         <Image
           width={100}
