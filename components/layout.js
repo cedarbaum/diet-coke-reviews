@@ -32,7 +32,7 @@ export default function Layout({ children }) {
       <main className="container mx-auto flex-1">{children}</main>
       <footer className="mt-8 py-4">
         <div className="container mx-auto flex justify-center">
-          <span>🗽❤️🥤</span>
+          <span className="text-4xl md:text-2xl">🗽❤️🥤</span>
         </div>
       </footer>
     </div>
