@@ -7,6 +7,8 @@ import { getCanTypesFromRating } from "../util/util";
 import PostMedia from "../components/PostMedia";
 import md from "markdown-it";
 
+const NUM_IMAGES_TO_PRIORITIZE = 8;
+
 export async function getStaticProps() {
   const files = fs.readdirSync("posts");
 
@@ -76,7 +78,10 @@ export default function Home({ posts }) {
               <article className="flex flex-col translate-x-0 w-full h-full">
                 <div className="flex flex-col grow container">
                   <div className="h-[340px] w-full">
-                    <PostMedia frontmatter={frontmatter} />
+                    <PostMedia
+                      frontmatter={frontmatter}
+                      priority={idx < NUM_IMAGES_TO_PRIORITIZE}
+                    />
                   </div>
                   <header className="grow">
                     <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">

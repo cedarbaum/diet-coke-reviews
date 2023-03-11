@@ -3,7 +3,7 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-export default function PostMedia({ frontmatter }) {
+export default function PostMedia({ frontmatter, priority }) {
   const [emblaRef] = useEmblaCarousel(undefined, [Autoplay()]);
 
   return (
@@ -28,6 +28,7 @@ export default function PostMedia({ frontmatter }) {
                 style={{ objectFit: "cover" }}
                 alt={frontmatter.title}
                 src={`/${path}`}
+                priority={priority}
                 sizes="(max-width: 768px) 100vw,
                        (max-width: 1200px) 50vw,
                        33vw"
