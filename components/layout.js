@@ -5,9 +5,15 @@ import { useRouter } from "next/router";
 import SearchBox from "./SearchBox";
 import { SearchContext } from "./SearchContext";
 
+const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
+const EMAIL_BODY = encodeURI(`Please include:
+- The restaurant name
+- At least one photo
+- Your review notes`);
+
 export default function Layout({ children }) {
   const router = useRouter();
-  const { isInNotFoundState, search } = useContext(SearchContext);
+  const { isInNotFoundState } = useContext(SearchContext);
   const canImage = !isInNotFoundState
     ? "/images/diet-coke/full-can.svg"
     : "/images/diet_pepsi_icon.svg";
@@ -32,6 +38,14 @@ export default function Layout({ children }) {
             </Link>
           </div>
           {router.pathname === "/" && <SearchBox />}
+        </div>
+        <div className="flex w-full justify-center align-center mt-2 md:mt-0">
+          <a
+            href={`mailto:hello@dietcoke.reviews?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
+            className="underline font-bold"
+          >
+            Submit a review 📧
+          </a>
         </div>
       </header>
       <main className="container mx-auto flex flex-1">{children}</main>

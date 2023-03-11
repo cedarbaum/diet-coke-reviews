@@ -63,7 +63,7 @@ export default function Home({ posts }) {
   }, [filteredAndSortedPosts]);
 
   return filteredAndSortedPosts.length > 0 ? (
-    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0 w-full h-fit gap-8">
+    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0 w-full h-fit gap-8">
       {filteredAndSortedPosts.map(({ slug, frontmatter, content }, idx) => (
         <div className="flip-card-container w-full h-full" key={slug}>
           <div
