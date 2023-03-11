@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -17,13 +17,26 @@ const EMAIL_BODY = encodeURI(`Please include:
 export default function Layout({ children }) {
   const router = useRouter();
   const { isInNotFoundState } = useContext(SearchContext);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const canImage = !isInNotFoundState
     ? "/images/diet-coke/full-can.svg"
     : "/images/diet_pepsi_icon.svg";
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="py-4 p-8 sticky top-0 z-30 bg-white">
+      <header
+        className={`py-4 p-8 sticky top-0 z-30 bg-white ${
+          offset > 0 ? "border-b border-slate-300" : ""
+        }`}
+      >
         <div className="flex justify-between">
           <div className="flex">
             <Link href="/">
