@@ -7,9 +7,12 @@ import { SearchContext } from "./SearchContext";
 
 const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
 const EMAIL_BODY = encodeURI(`Please include:
-- The restaurant name
-- At least one photo
-- Your review notes`);
+- Name of the restaurant (must be in NYC)
+- Rating (0-5 in increments of 0.5)
+- Images (at least 1 required)
+- Review notes
+- Include your name/alias in review? (optional)
+- Name or alias (optional)`);
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -40,11 +43,20 @@ export default function Layout({ children }) {
           {router.pathname === "/" && <SearchBox />}
         </div>
         <div className="flex w-full justify-center align-center mt-2 md:mt-0">
+          <span className="font-bold">Submit a review:&nbsp;</span>
+          <a
+            href="https://forms.gle/YbaYBBjfnudPJQ58A"
+            className="underline"
+            target="_blank"
+          >
+            Form ✏️
+          </a>
+          <span>&nbsp;</span>
           <a
             href={`mailto:hello@dietcoke.reviews?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
-            className="underline font-bold"
+            className="underline"
           >
-            Submit a review 📧
+            Email 📧
           </a>
         </div>
       </header>
