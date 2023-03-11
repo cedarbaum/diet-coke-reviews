@@ -68,12 +68,12 @@ export default function Home({ posts }) {
         <div className="flip-card-container w-full h-full" key={slug}>
           <div
             className={`flip-card w-full h-full ${
-              toggledCards.has(idx) ? "flip-card-active" : ""
+              toggledCards.has(slug) ? "flip-card-active" : ""
             }`}
           >
             <div
               className="card-front cursor-pointer"
-              onClick={() => setToggledCards((prev) => new Set(prev.add(idx)))}
+              onClick={() => setToggledCards((prev) => new Set(prev.add(slug)))}
             >
               <article className="flex flex-col translate-x-0 w-full h-full">
                 <div className="flex flex-col grow container">
@@ -106,7 +106,7 @@ export default function Home({ posts }) {
               className="card-back cursor-pointer"
               onClick={() =>
                 setToggledCards((prev) => {
-                  prev.delete(idx);
+                  prev.delete(slug);
                   return new Set(prev);
                 })
               }
