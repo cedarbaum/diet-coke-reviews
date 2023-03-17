@@ -6,12 +6,11 @@ import { SearchContext } from "../components/SearchContext";
 import { getCanTypesFromRating } from "../util/util";
 import PostMedia from "../components/PostMedia";
 import md from "markdown-it";
-
+import useSound from "use-sound";
 const NUM_IMAGES_TO_PRIORITIZE = 8;
 
 export async function getStaticProps() {
   const files = fs.readdirSync("posts");
-
   const posts = files.map((fileName) => {
     const slug = fileName.replace(".md", "");
     const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
@@ -33,6 +32,7 @@ export async function getStaticProps() {
 export default function Home({ posts }) {
   const { search, setIsInNotFoundState } = useContext(SearchContext);
   const [toggledCards, setToggledCards] = useState(new Set([]));
+  const [play] = useSound("/sounds/can-open.mp3");
 
   function matchesSearch(frontmatter, search) {
     if (search === undefined || search === "") {
@@ -62,6 +62,20 @@ export default function Home({ posts }) {
     setIsInNotFoundState(filteredAndSortedPosts?.length === 0);
   }, [filteredAndSortedPosts]);
 
+  const openCard = (slug) => {
+    play();
+    setToggledCards((prev) => {
+      return new Set(prev.add(slug));
+    });
+  };
+
+  const closeCard = (slug) => {
+    setToggledCards((prev) => {
+      prev.delete(slug);
+      return new Set(prev);
+    });
+  };
+
   return filteredAndSortedPosts.length > 0 ? (
     <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0 w-full h-fit gap-8">
       {filteredAndSortedPosts.map(({ slug, frontmatter, content }, idx) => (
@@ -73,7 +87,7 @@ export default function Home({ posts }) {
           >
             <div
               className="card-front cursor-pointer"
-              onClick={() => setToggledCards((prev) => new Set(prev.add(slug)))}
+              onClick={() => openCard(slug)}
             >
               <article className="flex flex-col translate-x-0 w-full h-full">
                 <div className="flex flex-col grow container">
@@ -104,12 +118,7 @@ export default function Home({ posts }) {
             </div>
             <div
               className="card-back cursor-pointer"
-              onClick={() =>
-                setToggledCards((prev) => {
-                  prev.delete(slug);
-                  return new Set(prev);
-                })
-              }
+              onClick={() => closeCard(slug)}
             >
               <article className="flex flex-col h-full w-full">
                 <div className="flex flex-col grow container">
