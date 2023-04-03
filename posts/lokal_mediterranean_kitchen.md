@@ -11,6 +11,6 @@ date: '2023-03-26'
 tags:
 ---
 
-- From a can
-- Servied with lime
+- From a can 🥫
+- Served with lime
 - Good quality ice
