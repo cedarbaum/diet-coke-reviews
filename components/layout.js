@@ -31,7 +31,7 @@ export default function Layout({ children }) {
     : "/images/diet_pepsi_icon.svg";
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col mx-auto min-h-screen container">
       <header
         className={`py-4 p-8 sticky top-0 z-30 bg-white ${
           offset > 0 ? "border-b border-slate-300" : ""
@@ -73,9 +73,9 @@ export default function Layout({ children }) {
           </a>
         </div>
       </header>
-      <main className="container mx-auto flex flex-1">{children}</main>
+      <main className="flex flex-1">{children}</main>
       <footer className="mt-8 py-4">
-        <div className="container mx-auto flex justify-center">
+        <div className="flex justify-center">
           <span className="text-4xl md:text-2xl">🗽❤️🥤</span>
         </div>
       </footer>
