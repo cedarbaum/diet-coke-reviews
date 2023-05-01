@@ -77,7 +77,7 @@ export default function Home({ posts }) {
   };
 
   return filteredAndSortedPosts.length > 0 ? (
-    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0 w-full h-fit gap-8">
+    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 w-full h-fit gap-8">
       {filteredAndSortedPosts.map(({ slug, frontmatter, content }, idx) => (
         <div className="flip-card-container w-full h-full" key={slug}>
           <div
@@ -98,7 +98,7 @@ export default function Home({ posts }) {
                     />
                   </div>
                   <header className="grow">
-                    <div className="flex justify-between items-baseline leading-tight p-2 md:p-2">
+                    <div className="flex justify-between items-baseline leading-tight p-2">
                       <h1 className="text-lg font-bold">{frontmatter.title}</h1>
                       <p className="text-grey-darker text-sm">
                         {frontmatter.date}

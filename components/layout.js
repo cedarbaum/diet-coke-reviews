@@ -33,7 +33,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex flex-col mx-auto min-h-screen container">
       <header
-        className={`py-4 p-8 sticky top-0 z-30 bg-white ${
+        className={`p-4 sticky top-0 z-30 bg-white ${
           offset > 0 ? "border-b border-slate-300" : ""
         }`}
       >
