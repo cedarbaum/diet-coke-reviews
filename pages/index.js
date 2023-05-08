@@ -82,13 +82,11 @@ export default function Home({ posts }) {
         <div className="flip-card-container w-full h-full" key={slug}>
           <div
             className={`flip-card w-full h-full ${
-              toggledCards.has(slug) ? "flip-card-active" : ""
+              toggledCards.has(slug) ? "flip-card-active cursor-pointer" : ""
             }`}
+            onClick={() => (toggledCards.has(slug) ? closeCard(slug) : null)}
           >
-            <div
-              className="card-front cursor-pointer"
-              onClick={() => openCard(slug)}
-            >
+            <div className="card-front">
               <article className="flex flex-col translate-x-0 w-full h-full">
                 <div className="flex flex-col grow container">
                   <div className="h-[340px] w-full">
@@ -97,7 +95,10 @@ export default function Home({ posts }) {
                       priority={idx < NUM_IMAGES_TO_PRIORITIZE}
                     />
                   </div>
-                  <header className="grow">
+                  <header
+                    className="grow cursor-pointer"
+                    onClick={() => openCard(slug)}
+                  >
                     <div className="flex justify-between items-baseline leading-tight p-2">
                       <h1 className="text-lg font-bold">{frontmatter.title}</h1>
                       <p className="text-grey-darker text-sm">
@@ -120,7 +121,7 @@ export default function Home({ posts }) {
               className="card-back cursor-pointer"
               onClick={() => closeCard(slug)}
             >
-              <article className="flex flex-col h-full w-full">
+              <article className="flex flex-col h-full w-full cursor-pointer">
                 <div className="flex flex-col grow container">
                   <div className="grow prose p-4">
                     <header>
