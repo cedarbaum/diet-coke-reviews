@@ -7,7 +7,7 @@ metaTitle: ''
 metaDesc: ''
 media:
   - mediaType: "video"
-    path: "https://dl46z856wgire.cloudfront.net/diet-coke-reviews-media/awash.webm"
+    path: "https://dl46z856wgire.cloudfront.net/diet-coke-reviews-media/awash"
 rating: 3.5
 date: '2023-04-13'
 tags:

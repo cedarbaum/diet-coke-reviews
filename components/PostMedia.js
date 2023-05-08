@@ -20,14 +20,15 @@ export default function PostMedia({ frontmatter, priority }) {
           >
             {mediaType === "video" ? (
               <video
-                type="video/webm"
                 muted
                 autoPlay
                 loop
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src={`${path}`} />
+                <source src={`${path}.mov`} />
+                <source src={`${path}.mp4`} />
+                <source src={`${path}.webm`} />
               </video>
             ) : (
               <Image
