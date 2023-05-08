@@ -26,7 +26,6 @@ export default function PostMedia({ frontmatter, priority }) {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src={`${path}.mov`} />
                 <source src={`${path}.mp4`} />
                 <source src={`${path}.webm`} />
               </video>
