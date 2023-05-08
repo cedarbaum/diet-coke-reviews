@@ -20,7 +20,7 @@ export default function PostMedia({ frontmatter, priority }) {
           >
             {mediaType === "video" ? (
               <video
-                type="video/mp4"
+                type="video/webm"
                 muted
                 autoPlay
                 loop
