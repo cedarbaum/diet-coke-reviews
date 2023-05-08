@@ -28,6 +28,7 @@ export default function PostMedia({ frontmatter, priority }) {
               >
                 <source src={`${path}.mp4`} />
                 <source src={`${path}.webm`} />
+                <source src={`${path}.mov`} />
               </video>
             ) : (
               <Image
