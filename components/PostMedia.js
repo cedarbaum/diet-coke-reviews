@@ -18,9 +18,9 @@ export default function PostMedia({ frontmatter, priority }) {
             key={`media_${idx}`}
             className="relative w-full h-full flex-[0_0_100%]"
           >
-            {mediaType === "mp4" ? (
-              <video autoPlay loop>
-                <source src={`/${path}`} />
+            {mediaType === "video" ? (
+              <video type="video/mp4" autoPlay loop className="w-full h-full object-cover">
+                <source src={`${path}`} />
               </video>
             ) : (
               <Image
