@@ -19,7 +19,14 @@ export default function PostMedia({ frontmatter, priority }) {
             className="relative w-full h-full flex-[0_0_100%]"
           >
             {mediaType === "video" ? (
-              <video type="video/mp4" autoPlay loop className="w-full h-full object-cover">
+              <video
+                type="video/mp4"
+                muted
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              >
                 <source src={`${path}`} />
               </video>
             ) : (
