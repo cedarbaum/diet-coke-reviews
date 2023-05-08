@@ -85,9 +85,7 @@ export default function Home({ posts }) {
               toggledCards.has(slug) ? "flip-card-active cursor-pointer" : ""
             }`}
             onClick={() =>
-              console.log("click", toggledCards) || toggledCards.has(slug)
-                ? closeCard(slug)
-                : undefined
+              toggledCards.has(slug) ? closeCard(slug) : undefined
             }
           >
             <div className="card-front">
