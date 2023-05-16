@@ -27,10 +27,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```
 ---
 title: 'Restaurant name'
-city: 'NYC'
-neighborhood: 'neighborhood'
-borough: 'borough'
-socialImage: images/your_image.png
+location: 'location'
+media:
+  - mediaType: "img"
+    path: images/img1
+  - ...
 rating: rating (0 to 5 with 0.5 increments)
 date: 'YYYY-MM-DD'
 tags:
