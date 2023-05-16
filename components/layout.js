@@ -7,7 +7,7 @@ import { SearchContext } from "./SearchContext";
 
 const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
 const EMAIL_BODY = encodeURI(`Please include:
-- Name of the restaurant (must be in NYC)
+- Name of the restaurant
 - Rating (0-5 in increments of 0.5)
 - Images (at least 1 required)
 - Review notes
@@ -76,7 +76,7 @@ export default function Layout({ children }) {
       <main className="flex flex-1">{children}</main>
       <footer className="mt-8 py-4">
         <div className="flex justify-center">
-          <span className="text-4xl md:text-2xl">🗽❤️🥤</span>
+          <span className="text-4xl md:text-2xl">❤️🥤</span>
         </div>
       </footer>
     </div>
