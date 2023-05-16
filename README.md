@@ -1,8 +1,8 @@
 <img src="./public/images/diet-coke/full-can.svg" width="50" height="auto">
 
-## Diet Coke reviews in NYC 🗽🥤
+## Diet Coke reviews 🥤
 
-This is a simple, markdown-powered website for posting reviews of Diet Cokes at restaurants in NYC.
+This is a simple, markdown-powered website for posting reviews of Diet Cokes at restaurants.
 
 It is hosted on Vercel here: [https://dietcoke.reviews](https://dietcoke.reviews)
 
