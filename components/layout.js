@@ -8,6 +8,7 @@ import { SearchContext } from "./SearchContext";
 const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
 const EMAIL_BODY = encodeURI(`Please include:
 - Name of the restaurant
+- Location
 - Rating (0-5 in increments of 0.5)
 - Images (at least 1 required)
 - Review notes
