@@ -30,12 +30,13 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function PostPage({ frontmatter, content }) {
+  const location = frontmatter.location
+    ? frontmatter.location
+    : `${frontmatter.neighborhood}, ${frontmatter.borough}`;
   return (
     <article className="prose mx-8">
       <h1 className="mb-2">{frontmatter.title}</h1>
-      <h2 className="text-gray-500 text-sm mt-0">
-        {frontmatter.neighborhood}, {frontmatter.borough}
-      </h2>
+      <h2 className="text-gray-500 text-sm mt-0">{location}</h2>
       <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
       <footer className="container mt-8 flex justify-center">
         <div>

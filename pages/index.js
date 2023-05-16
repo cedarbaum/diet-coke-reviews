@@ -42,8 +42,9 @@ export default function Home({ posts }) {
     const searchLowerCase = search.toLowerCase();
     return (
       frontmatter.title.toLowerCase().includes(searchLowerCase) ||
-      frontmatter.neighborhood.toLowerCase().includes(searchLowerCase) ||
-      frontmatter.borough.toLowerCase().includes(searchLowerCase) ||
+      frontmatter.location?.toLowerCase().includes(searchLowerCase) ||
+      frontmatter.neighborhood?.toLowerCase().includes(searchLowerCase) ||
+      frontmatter.borough?.toLowerCase().includes(searchLowerCase) ||
       frontmatter.tags?.some((tag) =>
         tag.toLowerCase().includes(searchLowerCase)
       )
@@ -78,77 +79,82 @@ export default function Home({ posts }) {
 
   return filteredAndSortedPosts.length > 0 ? (
     <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 w-full h-fit gap-8">
-      {filteredAndSortedPosts.map(({ slug, frontmatter, content }, idx) => (
-        <div className="flip-card-container w-full h-full" key={slug}>
-          <div
-            className={`flip-card w-full h-full ${
-              toggledCards.has(slug) ? "flip-card-active cursor-pointer" : ""
-            }`}
-            onClick={() =>
-              toggledCards.has(slug) ? closeCard(slug) : undefined
-            }
-          >
-            <div className="card-front">
-              <article className="flex flex-col translate-x-0 w-full h-full">
-                <div className="flex flex-col grow container">
-                  <div className="h-[340px] w-full">
-                    <PostMedia
-                      frontmatter={frontmatter}
-                      priority={idx < NUM_IMAGES_TO_PRIORITIZE}
-                    />
+      {filteredAndSortedPosts.map(({ slug, frontmatter, content }, idx) => {
+        const location = frontmatter.location
+          ? frontmatter.location
+          : `${frontmatter.neighborhood}, ${frontmatter.borough}`;
+        return (
+          <div className="flip-card-container w-full h-full" key={slug}>
+            <div
+              className={`flip-card w-full h-full ${
+                toggledCards.has(slug) ? "flip-card-active cursor-pointer" : ""
+              }`}
+              onClick={() =>
+                toggledCards.has(slug) ? closeCard(slug) : undefined
+              }
+            >
+              <div className="card-front">
+                <article className="flex flex-col translate-x-0 w-full h-full">
+                  <div className="flex flex-col grow container">
+                    <div className="h-[340px] w-full">
+                      <PostMedia
+                        frontmatter={frontmatter}
+                        priority={idx < NUM_IMAGES_TO_PRIORITIZE}
+                      />
+                    </div>
+                    <div
+                      className="grow flex flex-col cursor-pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openCard(slug);
+                      }}
+                    >
+                      <header className="grow">
+                        <div className="flex justify-between items-baseline leading-tight p-2">
+                          <h1 className="text-lg font-bold">
+                            {frontmatter.title}
+                          </h1>
+                          <p className="text-grey-darker text-sm">
+                            {frontmatter.date}
+                          </p>
+                        </div>
+                        <div className="pl-2">
+                          <h2 className="text-gray-500 text-sm">{location}</h2>
+                        </div>
+                      </header>
+                      <footer className="p-2">
+                        <CardCanRating rating={frontmatter.rating} />
+                      </footer>
+                    </div>
                   </div>
-                  <div
-                    className="grow flex flex-col cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openCard(slug);
-                    }}
-                  >
-                    <header className="grow">
-                      <div className="flex justify-between items-baseline leading-tight p-2">
-                        <h1 className="text-lg font-bold">
-                          {frontmatter.title}
-                        </h1>
-                        <p className="text-grey-darker text-sm">
-                          {frontmatter.date}
-                        </p>
-                      </div>
-                      <div className="pl-2">
-                        <h2 className="text-gray-500 text-sm">
-                          {frontmatter.neighborhood}, {frontmatter.borough}
+                </article>
+              </div>
+              <div className="card-back">
+                <article className="flex flex-col h-full w-full">
+                  <div className="flex flex-col grow container">
+                    <div className="grow prose p-4">
+                      <header>
+                        <h1 className="mb-0">{frontmatter.title}</h1>
+                        <h2 className="text-gray-500 text-sm mt-1">
+                          {location}
                         </h2>
-                      </div>
-                    </header>
+                      </header>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: md().render(content),
+                        }}
+                      />
+                    </div>
                     <footer className="p-2">
                       <CardCanRating rating={frontmatter.rating} />
                     </footer>
                   </div>
-                </div>
-              </article>
-            </div>
-            <div className="card-back">
-              <article className="flex flex-col h-full w-full">
-                <div className="flex flex-col grow container">
-                  <div className="grow prose p-4">
-                    <header>
-                      <h1 className="mb-0">{frontmatter.title}</h1>
-                      <h2 className="text-gray-500 text-sm mt-1">
-                        {frontmatter.neighborhood}, {frontmatter.borough}
-                      </h2>
-                    </header>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: md().render(content) }}
-                    />
-                  </div>
-                  <footer className="p-2">
-                    <CardCanRating rating={frontmatter.rating} />
-                  </footer>
-                </div>
-              </article>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   ) : (
     <div className="container flex flex-col flex-1 mb-4 md:justify-center items-center">
