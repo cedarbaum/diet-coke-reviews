@@ -65,7 +65,7 @@ export default function Layout({ children }) {
           >
             Form ✏️
           </a>
-          <span>&nbsp;/&nbsp;</span>
+          <span>&nbsp;or&nbsp;</span>
           <a
             href={`mailto:hello@dietcoke.reviews?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
             className="underline"
