@@ -144,6 +144,14 @@ export default function Home({ posts }) {
                           __html: md().render(content),
                         }}
                       />
+                      {frontmatter.author && (
+                        <h2 className="text-sm">
+                          <span className="text-gray-500 font-bold">
+                            Review by{" "}
+                          </span>
+                          {frontmatter.author}
+                        </h2>
+                      )}
                     </div>
                     <footer className="p-2">
                       <CardCanRating rating={frontmatter.rating} />
