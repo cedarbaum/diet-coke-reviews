@@ -53,55 +53,26 @@ async function main() {
     };
   });
 
-  const coordinatesForRegion = new Map();
   for (const post of posts) {
     const address = post.frontmatter.address;
     if (!address) {
       console.log(`No address found for ${post.slug}`);
       continue;
     }
-    const region = post.frontmatter.region || defaultRegion;
     const existingCoordinates = post.frontmatter.coordinates;
     if (existingCoordinates && !argv.forceRegeocode) {
       console.log(`Skipping ${post.slug} because it already has coordinates`);
-      coordinatesForRegion.set(region, [
-        ...(coordinatesForRegion.get(region) || []),
-        existingCoordinates,
-      ]);
       continue;
     }
     console.log(`Geocoding ${post.slug}`);
     const coordinates = await geocodeAddress(post.frontmatter.address);
     console.log(`Got coordinates for ${post.slug}:`, coordinates);
-    coordinatesForRegion.set(region, [
-      ...(coordinatesForRegion.get(region) || []),
-      coordinates,
-    ]);
 
     // Write markdown file with coordinates
     const newFrontmatter = { ...post.frontmatter, coordinates };
     const newPost = matter.stringify(post.content, newFrontmatter);
     fs.writeFileSync(`posts/${post.slug}.md`, newPost);
   }
-
-  const regionToBbox = new Map();
-  for (const [region, allCoordinates] of coordinatesForRegion) {
-    console.log(`Calculating bbox for ${region}`);
-    const bbox = turf.bbox(
-      turf.featureCollection(
-        allCoordinates.map((coord) =>
-          turf.point([coord.longitude, coord.latitude]),
-        ),
-      ),
-    );
-    regionToBbox.set(region, bbox);
-  }
-
-  const bboxJavascript = `export const regionToBbox = new Map(${JSON.stringify(
-    Array.from(regionToBbox.entries()),
-  )});`;
-
-  fs.writeFileSync("util/bbox.js", bboxJavascript);
 }
 
 main();
