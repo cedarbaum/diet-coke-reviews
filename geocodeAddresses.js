@@ -6,6 +6,7 @@ const fs = require("fs");
 const matter = require("gray-matter");
 const argv = yargs(hideBin(process.argv)).argv;
 const { Client } = require("@googlemaps/google-maps-services-js");
+const turf = require("@turf/turf");
 const client = new Client({});
 
 require("dotenv").config({ path: [".env.local", ".env"] });
@@ -50,25 +51,43 @@ async function main() {
     };
   });
 
+  const allCoordinates = [];
   for (const post of posts) {
     const address = post.frontmatter.address;
     if (!address) {
       console.log(`No address found for ${post.slug}`);
       continue;
     }
-    if (address.latitude && address.longitude && !argv.forceRegeocode) {
+    const existingCoordinates = post.frontmatter.coordinates;
+    if (
+      existingCoordinates &&
+      !argv.forceRegeocode
+    ) {
       console.log(`Skipping ${post.slug} because it already has coordinates`);
+      allCoordinates.push(existingCoordinates);
       continue;
     }
     console.log(`Geocoding ${post.slug}`);
     const coordinates = await geocodeAddress(post.frontmatter.address);
     console.log(`Got coordinates for ${post.slug}:`, coordinates);
+    allCoordinates.push(coordinates);
 
     // Write markdown file with coordinates
     const newFrontmatter = { ...post.frontmatter, coordinates };
     const newPost = matter.stringify(post.content, newFrontmatter);
     fs.writeFileSync(`posts/${post.slug}.md`, newPost);
   }
+
+  const bbox = turf.bbox(
+    turf.featureCollection(
+      allCoordinates.map((coord) =>
+        turf.point([coord.longitude, coord.latitude]),
+      ),
+    ),
+  );
+  console.log("Bounding box:", bbox);
+  const bboxJavascript = `export const bbox = ${JSON.stringify(bbox)};`;
+  fs.writeFileSync("util/bbox.js", bboxJavascript);
 }
 
 main();

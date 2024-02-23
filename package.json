@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "geocode": "node ./geocodeAddresses.js"
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.3.42",

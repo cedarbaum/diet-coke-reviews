@@ -7,6 +7,7 @@ import matter from "gray-matter";
 import * as turf from "@turf/turf";
 import { createRoot } from "react-dom/client";
 import { PostPopUp } from "../components/Post";
+import { bbox } from "../util/bbox"
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -62,8 +63,10 @@ export default function Map({ posts }) {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [-73.9712, 40.7831],
-      zoom: 15,
+      bounds: bbox,
+      fitBoundsOptions: {
+        padding: 50,
+      },
     });
 
     map.current.on("load", () => {
