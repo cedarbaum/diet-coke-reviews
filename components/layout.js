@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import SearchBox from "./SearchBox";
 import { SearchContext } from "./SearchContext";
+import PageSwitcher from "./PageSwitcher";
 
 const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
 const EMAIL_BODY = encodeURI(`Please include:
@@ -17,6 +18,7 @@ const EMAIL_BODY = encodeURI(`Please include:
 
 export default function Layout({ children }) {
   const router = useRouter();
+  const page = router.pathname;
   const { isInNotFoundState } = useContext(SearchContext);
   const [offset, setOffset] = useState(0);
 
@@ -73,13 +75,18 @@ export default function Layout({ children }) {
             Email 📧
           </a>
         </div>
+        <div className="w-full flex flex-row justify-center mt-2">
+          <PageSwitcher />
+        </div>
       </header>
       <main className="flex flex-1">{children}</main>
-      <footer className="mt-8 py-4">
-        <div className="flex justify-center">
-          <span className="text-4xl md:text-2xl">❤️🥤</span>
-        </div>
-      </footer>
+      {page !== "/map" && (
+        <footer className="mt-8 py-4">
+          <div className="flex justify-center">
+            <span className="text-4xl md:text-2xl">❤️🥤</span>
+          </div>
+        </footer>
+      )}
     </div>
   );
 }
