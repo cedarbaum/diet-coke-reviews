@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import SearchBox from "./SearchBox";
 import { SearchContext } from "./SearchContext";
 import PageSwitcher from "./PageSwitcher";
+import SortSelector from "./SortSelector";
 
 const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
 const EMAIL_BODY = encodeURI(`Please include:
@@ -15,6 +16,8 @@ const EMAIL_BODY = encodeURI(`Please include:
 - Review notes
 - Include your name/alias in review? (optional)
 - Name or alias (optional)`);
+
+const sortFields = ["Date", "Rating"];
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -75,8 +78,13 @@ export default function Layout({ children }) {
             Email 📧
           </a>
         </div>
-        <div className="w-full flex flex-row justify-center mt-2">
+        <div className="w-full flex flex-col md:flex-row justify-center mt-4">
           <PageSwitcher />
+          {page === "/" && (
+            <div className="mt-4 md:mt-0">
+              <SortSelector sortFields={sortFields} />
+            </div>
+          )}
         </div>
       </header>
       <main className="flex flex-1">{children}</main>

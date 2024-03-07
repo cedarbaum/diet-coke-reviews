@@ -8,7 +8,7 @@ export default function Post({ frontmatter, content, onRender }) {
     if (onRender) {
       onRender();
     }
-  }, []);
+  }, [onRender]);
 
   const location = frontmatter.location
     ? frontmatter.location
@@ -47,7 +47,7 @@ export function PostPopUp({ frontmatter, content, iconWidth, iconHeight, onRende
     if (onRender) {
       onRender();
     }
-  }, []);
+  }, [onRender]);
 
   const location = frontmatter.location
     ? frontmatter.location

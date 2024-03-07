@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../components/SearchContext";
+import { SortContext } from "../components/SortContext";
 import { getCanTypesFromRating } from "../util/util";
 import PostMedia from "../components/PostMedia";
 import md from "markdown-it";
@@ -31,6 +32,7 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
   const { search, setIsInNotFoundState } = useContext(SearchContext);
+  const { sortType } = useContext(SortContext);
   const [toggledCards, setToggledCards] = useState(new Set([]));
   const [play] = useSound("/sounds/can-open.mp3");
 
@@ -46,7 +48,7 @@ export default function Home({ posts }) {
       frontmatter.neighborhood?.toLowerCase().includes(searchLowerCase) ||
       frontmatter.borough?.toLowerCase().includes(searchLowerCase) ||
       frontmatter.tags?.some((tag) =>
-        tag.toLowerCase().includes(searchLowerCase)
+        tag.toLowerCase().includes(searchLowerCase),
       )
     );
   }
@@ -54,14 +56,20 @@ export default function Home({ posts }) {
   const filteredAndSortedPosts = posts
     .filter(({ frontmatter }) => matchesSearch(frontmatter, search))
     .sort((p1, p2) => {
+      if (sortType.name === "Rating") {
+        return sortType.direction === "desc"
+          ? p2.frontmatter.rating - p1.frontmatter.rating
+          : p1.frontmatter.rating - p2.frontmatter.rating;
+      }
+      // Sort by date
       const p1Date = Date.parse(p1.frontmatter.date);
       const p2Date = Date.parse(p2.frontmatter.date);
-      return p2Date - p1Date;
+      return sortType.direction === "desc" ? p2Date - p1Date : p1Date - p2Date;
     });
 
   useEffect(() => {
     setIsInNotFoundState(filteredAndSortedPosts?.length === 0);
-  }, [filteredAndSortedPosts]);
+  }, [filteredAndSortedPosts, setIsInNotFoundState]);
 
   const openCard = (slug) => {
     play();

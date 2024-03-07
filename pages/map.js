@@ -205,7 +205,7 @@ export default function Map({ posts }) {
         }
       });
     });
-  }, [selectedRegion]);
+  }, [selectedRegion, posts]);
 
   return (
     <div className="relative w-full flex-1 md:pb-4 lg:pb-4">
