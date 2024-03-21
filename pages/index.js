@@ -122,7 +122,7 @@ export default function Home({ posts }) {
                           <h1 className="text-lg font-bold">
                             {frontmatter.title}
                           </h1>
-                          <p className="text-grey-darker text-sm">
+                          <p className="text-grey-darker text-sm ml-2 whitespace-nowrap">
                             {frontmatter.date}
                           </p>
                         </div>
