@@ -79,7 +79,7 @@ export default function Layout({ children }) {
           </a>
         </div>
         <div className="w-full flex flex-col md:flex-row justify-center mt-4">
-          <PageSwitcher />
+          {page !== "/404" && <PageSwitcher />}
           {page === "/" && (
             <div className="mt-4 md:mt-0">
               <SortSelector sortFields={sortFields} />
