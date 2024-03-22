@@ -48,3 +48,22 @@
   transform: rotateY(180deg);
   z-index: 1;
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loading-indicator {
+  @apply w-full h-full;
+  background: linear-gradient(-45deg, #e0e0e0, #c0c0c0, #e0e0e0, #c0c0c0);
+  background-size: 400% 400%;
+  animation: gradientAnimation 2s ease infinite;
+}
