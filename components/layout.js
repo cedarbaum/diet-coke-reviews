@@ -72,7 +72,7 @@ export default function Layout({ children }) {
           </a>
           <span>&nbsp;or&nbsp;</span>
           <a
-            href={`mailto:hello@dietcoke.reviews?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
+            href={`mailto:${process.env.NEXT_PUBLIC_REVIEW_SUBMIT_EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
             className="underline"
           >
             Email 📧
