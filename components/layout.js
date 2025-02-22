@@ -7,15 +7,6 @@ import { SearchContext } from "./SearchContext";
 import PageSwitcher from "./PageSwitcher";
 import SortSelector from "./SortSelector";
 
-const EMAIL_SUBJECT = encodeURI("Diet Coke review submission");
-const EMAIL_BODY = encodeURI(`Please include:
-- Name of the restaurant
-- Location
-- Rating (0-5 in increments of 0.5)
-- Images (at least 1 required)
-- Review notes
-- Include your name/alias in review? (optional)
-- Name or alias (optional)`);
 
 const sortFields = ["Date", "Rating"];
 
@@ -69,13 +60,6 @@ export default function Layout({ children }) {
             target="_blank"
           >
             Form ✏️
-          </a>
-          <span>&nbsp;or&nbsp;</span>
-          <a
-            href={`mailto:${process.env.NEXT_PUBLIC_REVIEW_SUBMIT_EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
-            className="underline"
-          >
-            Email 📧
           </a>
         </div>
         <div className="w-full flex flex-col md:flex-row justify-center mt-4">
